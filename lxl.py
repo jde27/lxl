@@ -101,7 +101,7 @@ class Equation:
                 k = len(remaining_string+1)
             cut_string = remaining_string[:min(j,k)]
             num_cols = cut_string.count('&') + 1
-            latex_code = pre_string + '\\left(\\begin{array}[' + 'c'*num_cols + ']' + remaining_string
+            latex_code = pre_string + '\\left(\\begin{array}{' + 'c'*num_cols + '}' + remaining_string
 
         latex_code = latex_code.replace('\\end{pmatrix}', '\\end{array}\\right)')
         for char in ['R', 'C', 'Q', 'Z']:

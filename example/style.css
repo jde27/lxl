@@ -6,6 +6,10 @@ figcaption {
     font-weight: bold;
 }
 
+.Proof::after {
+    content: '\25FC';
+    float: right;
+}
 .Lemma p, .Theorem p, .Example p, .Remark p, .Corollary p, .Proposition p, .Definition p {
     display: inline;
 }

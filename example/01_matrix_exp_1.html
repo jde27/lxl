@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+The matrix exponential
+</title>
+<meta name="author" content="Jonny Evans"/>
+<meta name="description" content="Notes from an introductory lecture on Lie groups in which we define the exponential of a matrix and compute it in some simple examples."/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="style.css"/>    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/config/Accessible-full.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML'
+async></script>
+
+</head>
+<body>
+<nav role="navigation">
+<hr/>
+<a href="index.html">| Index of lectures</a>
+<a href="01_matrix_exp_1_accessible.html">| Replace MathML by alt-text in this page |</a>
+<a href="02_matrix_exp_2.html">Next:Properties of the matrix exponential</a>
+<hr/>
+</nav>
+<main role="main">
+<header role="banner">
+<h1>The matrix exponential</h1>
+</header>
+<section id="s5816239428019989" aria-labelledby="h5816239428019989" role="region">
+<h2 id="h5816239428019989">An example: the group U(1)</h2>
+<p>
+  <time>0.00</time> Lie theory is based on the observation that we can define an exponential function for matrices in just the same way we can for numbers. 
+</p>
+<figure class="Example">
+<figcaption id="exm:unit_circle">
+Example (The group U(1)): 
+</figcaption>
+<p>
+  <time>0.30</time> Let <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="U(1)" display="inline">
+  <mrow>
+    <mi>U</mi>
+    <mo>⁢</mo>
+    <mrow>
+      <mo stretchy="false">(</mo>
+      <mn>1</mn>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </mrow>
+</math>
+ be the set of unit complex numbers,   i.e. the unit circle in <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\mathbf{C}" display="inline">
+  <mi>𝐂</mi>
+</math>
+. 
+</p>
+<figure><center><img src="./img/unit_circle.jpg" alt="The unit circle in the complex plane"/>
+</center>
+</figure>
+<p>
+  <time>1.00</time> Any <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="z\in U(1)" display="inline">
+  <mrow>
+    <mi>z</mi>
+    <mo>∈</mo>
+    <mrow>
+      <mi>U</mi>
+      <mo>⁢</mo>
+      <mrow>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo stretchy="false">)</mo>
+      </mrow>
+    </mrow>
+  </mrow>
+</math>
+ can be written as   <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="e^{i\theta}" display="inline">
+  <msup>
+    <mi>e</mi>
+    <mrow>
+      <mi>i</mi>
+      <mo>⁢</mo>
+      <mi>θ</mi>
+    </mrow>
+  </msup>
+</math>
+ where <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\theta" display="inline">
+  <mi>θ</mi>
+</math>
+ is the angle   <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="z" display="inline">
+  <mi>z</mi>
+</math>
+ makes with the <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="x" display="inline">
+  <mi>x</mi>
+</math>
+-axis. Here are some comments:
+</p>
+<ul>
+<li>
+<p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="U(1)" display="inline">
+  <mrow>
+    <mi>U</mi>
+    <mo>⁢</mo>
+    <mrow>
+      <mo stretchy="false">(</mo>
+      <mn>1</mn>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </mrow>
+</math>
+ is a group under multiplication: <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="z\in U(1)" display="inline">
+  <mrow>
+    <mi>z</mi>
+    <mo>∈</mo>
+    <mrow>
+      <mi>U</mi>
+      <mo>⁢</mo>
+      <mrow>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo stretchy="false">)</mo>
+      </mrow>
+    </mrow>
+  </mrow>
+</math>
+ if and only if <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="|z|^{2}=z\bar{z}=1" display="inline">
+  <mrow>
+    <msup>
+      <mrow>
+        <mo stretchy="false">|</mo>
+        <mi>z</mi>
+        <mo stretchy="false">|</mo>
+      </mrow>
+      <mn>2</mn>
+    </msup>
+    <mo>=</mo>
+    <mrow>
+      <mi>z</mi>
+      <mo>⁢</mo>
+      <mover accent="true">
+        <mi>z</mi>
+        <mo stretchy="false">¯</mo>
+      </mover>
+    </mrow>
+    <mo>=</mo>
+    <mn>1</mn>
+  </mrow>
+</math>
+ so if <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="z_{1},z_{2}\in U(1)" display="inline">
+  <mrow>
+    <mrow>
+      <msub>
+        <mi>z</mi>
+        <mn>1</mn>
+      </msub>
+      <mo>,</mo>
+      <msub>
+        <mi>z</mi>
+        <mn>2</mn>
+      </msub>
+    </mrow>
+    <mo>∈</mo>
+    <mrow>
+      <mi>U</mi>
+      <mo>⁢</mo>
+      <mrow>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo stretchy="false">)</mo>
+      </mrow>
+    </mrow>
+  </mrow>
+</math>
+ then     <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="|z_{1}z_{2}|^{2}=z_{1}z_{2}\bar{z}_{1}\bar{z}_{2}=z_{1}\bar{z}_{1}z_{2}\bar{z}%&#10;_{2}=1" display="block">
+  <mrow>
+    <msup>
+      <mrow>
+        <mo stretchy="false">|</mo>
+        <mrow>
+          <msub>
+            <mi>z</mi>
+            <mn>1</mn>
+          </msub>
+          <mo>⁢</mo>
+          <msub>
+            <mi>z</mi>
+            <mn>2</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">|</mo>
+      </mrow>
+      <mn>2</mn>
+    </msup>
+    <mo>=</mo>
+    <mrow>
+      <msub>
+        <mi>z</mi>
+        <mn>1</mn>
+      </msub>
+      <mo>⁢</mo>
+      <msub>
+        <mi>z</mi>
+        <mn>2</mn>
+      </msub>
+      <mo>⁢</mo>
+      <msub>
+        <mover accent="true">
+          <mi>z</mi>
+          <mo stretchy="false">¯</mo>
+        </mover>
+        <mn>1</mn>
+      </msub>
+      <mo>⁢</mo>
+      <msub>
+        <mover accent="true">
+          <mi>z</mi>
+          <mo stretchy="false">¯</mo>
+        </mover>
+        <mn>2</mn>
+      </msub>
+    </mrow>
+    <mo>=</mo>
+    <mrow>
+      <msub>
+        <mi>z</mi>
+        <mn>1</mn>
+      </msub>
+      <mo>⁢</mo>
+      <msub>
+        <mover accent="true">
+          <mi>z</mi>
+          <mo stretchy="false">¯</mo>
+        </mover>
+        <mn>1</mn>
+      </msub>
+      <mo>⁢</mo>
+      <msub>
+        <mi>z</mi>
+        <mn>2</mn>
+      </msub>
+      <mo>⁢</mo>
+      <msub>
+        <mover accent="true">
+          <mi>z</mi>
+          <mo stretchy="false">¯</mo>
+        </mover>
+        <mn>2</mn>
+      </msub>
+    </mrow>
+    <mo>=</mo>
+    <mn>1</mn>
+  </mrow>
+</math>
+ so <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="U(1)" display="inline">
+  <mrow>
+    <mi>U</mi>
+    <mo>⁢</mo>
+    <mrow>
+      <mo stretchy="false">(</mo>
+      <mn>1</mn>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </mrow>
+</math>
+ is closed under multiplication.
+</p>
+</li>
+<li>
+<p>
+    <time>2.47</time> The identity element is the number <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="1" display="inline">
+  <mn>1</mn>
+</math>
+.
+</p>
+</li>
+<li>
+<p>
+    <time>3.15</time> Any <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="z\in U(1)" display="inline">
+  <mrow>
+    <mi>z</mi>
+    <mo>∈</mo>
+    <mrow>
+      <mi>U</mi>
+      <mo>⁢</mo>
+      <mrow>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo stretchy="false">)</mo>
+      </mrow>
+    </mrow>
+  </mrow>
+</math>
+ is the exponential     of a pure imaginary number (and conversely). The pure imaginary     axis is vertical, and therefore it's parallel to the tangent line     to the unit circle at the point <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="1" display="inline">
+  <mn>1</mn>
+</math>
+ (i.e. the tangent line to     <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="U(1)" display="inline">
+  <mrow>
+    <mi>U</mi>
+    <mo>⁢</mo>
+    <mrow>
+      <mo stretchy="false">(</mo>
+      <mn>1</mn>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </mrow>
+</math>
+ at the identity). 
+</p>
+<figure><center><img src="./img/unit_circle_tangent.jpg" alt="The tangent line to U(1) at the identity"/>
+</center>
+</figure>
+</li>
+</ul>
+</figure>
+<p>
+<time>4.50</time> These three facts will generalise: given a group <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="G" display="inline">
+  <mi>G</mi>
+</math>
+ of matrices, take the tangent space to <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="G" display="inline">
+  <mi>G</mi>
+</math>
+ at the identity matrix (and translate it to pass through the zero matrix); the exponentials of these matrices are going to give us elements of <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="G" display="inline">
+  <mi>G</mi>
+</math>
+. 
+</p>
+</section>
+<section id="s5840459868911386" aria-labelledby="h5840459868911386" role="region">
+<h2 id="h5840459868911386">The matrix exponential function</h2>
+<p>
+ 
+</p>
+<figure class="Definition">
+<figcaption id="def:exp">
+Definition (The matrix exponential): 
+</figcaption>
+<p>
+  <time>5.15</time> If <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="A" display="inline">
+  <mi>A</mi>
+</math>
+ is a square matrix then the   <def>exponential of <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="A" display="inline">
+  <mi>A</mi>
+</math>
+</def> is defined to be   <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\exp(A)=I+A+\frac{1}{2}A^{2}+\frac{1}{3!}A^{3}+\cdots=\sum_{n=0}^{\infty}\frac%&#10;{1}{n!}A^{n}." display="block">
+  <mrow>
+    <mrow>
+      <mrow>
+        <mi>exp</mi>
+        <mo>⁡</mo>
+        <mrow>
+          <mo stretchy="false">(</mo>
+          <mi>A</mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </mrow>
+      <mo>=</mo>
+      <mrow>
+        <mi>I</mi>
+        <mo>+</mo>
+        <mi>A</mi>
+        <mo>+</mo>
+        <mrow>
+          <mfrac>
+            <mn>1</mn>
+            <mn>2</mn>
+          </mfrac>
+          <mo>⁢</mo>
+          <msup>
+            <mi>A</mi>
+            <mn>2</mn>
+          </msup>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+          <mfrac>
+            <mn>1</mn>
+            <mrow>
+              <mn>3</mn>
+              <mo lspace="0pt" rspace="3.5pt">!</mo>
+            </mrow>
+          </mfrac>
+          <mo>⁢</mo>
+          <msup>
+            <mi>A</mi>
+            <mn>3</mn>
+          </msup>
+        </mrow>
+        <mo>+</mo>
+        <mi mathvariant="normal">⋯</mi>
+      </mrow>
+      <mo>=</mo>
+      <mrow>
+        <munderover>
+          <mo largeop="true" movablelimits="false" symmetric="true">∑</mo>
+          <mrow>
+            <mi>n</mi>
+            <mo>=</mo>
+            <mn>0</mn>
+          </mrow>
+          <mi mathvariant="normal">∞</mi>
+        </munderover>
+        <mrow>
+          <mfrac>
+            <mn>1</mn>
+            <mrow>
+              <mi>n</mi>
+              <mo lspace="0pt" rspace="3.5pt">!</mo>
+            </mrow>
+          </mfrac>
+          <mo>⁢</mo>
+          <msup>
+            <mi>A</mi>
+            <mi>n</mi>
+          </msup>
+        </mrow>
+      </mrow>
+    </mrow>
+    <mo>.</mo>
+  </mrow>
+</math>
+ Here <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="A^{0}=I" display="inline">
+  <mrow>
+    <msup>
+      <mi>A</mi>
+      <mn>0</mn>
+    </msup>
+    <mo>=</mo>
+    <mi>I</mi>
+  </mrow>
+</math>
+. 
+</p>
+</figure>
+<figure class="Example">
+<figcaption id="exm:exp_rotation">
+Example: 
+</figcaption>
+<p>
+  <time>6.50</time> Let <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{{A=\left(}\begin{array}[cc]{}}\end{array}0&amp;-\theta\\&#10;\theta&amp;0\right)" display="inline">
+  <mrow>
+    <mi>A</mi>
+    <mo>=</mo>
+    <mrow>
+      <mo>(</mo>
+      <mtable columnspacing="5pt" rowspacing="0pt">
+        <mtr>
+          <mtd columnalign="center">
+            <mn>0</mn>
+          </mtd>
+          <mtd columnalign="center">
+            <mrow>
+              <mo>-</mo>
+              <mi>θ</mi>
+            </mrow>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd columnalign="center">
+            <mi>θ</mi>
+          </mtd>
+          <mtd columnalign="center">
+            <mn>0</mn>
+          </mtd>
+        </mtr>
+      </mtable>
+      <mo>)</mo>
+    </mrow>
+  </mrow>
+</math>
+. We'll compute <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\exp(A)" display="inline">
+  <mrow>
+    <mi>exp</mi>
+    <mo>⁡</mo>
+    <mrow>
+      <mo stretchy="false">(</mo>
+      <mi>A</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </mrow>
+</math>
+. First let's compute the powers of   <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="A" display="inline">
+  <mi>A</mi>
+</math>
+:
+</p>
+<ul>
+<li>
+<p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{{A^{2}=\left(}\begin{array}[cc]{}}\end{array}-\theta^{2}&amp;0\\&#10;0&amp;-\theta^{2}\right)=-\theta^{2}I" display="inline">
+  <mrow>
+    <msup>
+      <mi>A</mi>
+      <mn>2</mn>
+    </msup>
+    <mo>=</mo>
+    <mrow>
+      <mo>(</mo>
+      <mtable columnspacing="5pt" rowspacing="0pt">
+        <mtr>
+          <mtd columnalign="center">
+            <mrow>
+              <mo>-</mo>
+              <msup>
+                <mi>θ</mi>
+                <mn>2</mn>
+              </msup>
+            </mrow>
+          </mtd>
+          <mtd columnalign="center">
+            <mn>0</mn>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd columnalign="center">
+            <mn>0</mn>
+          </mtd>
+          <mtd columnalign="center">
+            <mrow>
+              <mo>-</mo>
+              <msup>
+                <mi>θ</mi>
+                <mn>2</mn>
+              </msup>
+            </mrow>
+          </mtd>
+        </mtr>
+      </mtable>
+      <mo>)</mo>
+    </mrow>
+    <mo>=</mo>
+    <mrow>
+      <mo>-</mo>
+      <mrow>
+        <msup>
+          <mi>θ</mi>
+          <mn>2</mn>
+        </msup>
+        <mo>⁢</mo>
+        <mi>I</mi>
+      </mrow>
+    </mrow>
+  </mrow>
+</math>
+,
+</p>
+</li>
+<li>
+<p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{{A^{3}=\left(}\begin{array}[cc]{}}\end{array}0&amp;\theta^{3}\\&#10;-\theta^{3}&amp;0\right)" display="inline">
+  <mrow>
+    <msup>
+      <mi>A</mi>
+      <mn>3</mn>
+    </msup>
+    <mo>=</mo>
+    <mrow>
+      <mo>(</mo>
+      <mtable columnspacing="5pt" rowspacing="0pt">
+        <mtr>
+          <mtd columnalign="center">
+            <mn>0</mn>
+          </mtd>
+          <mtd columnalign="center">
+            <msup>
+              <mi>θ</mi>
+              <mn>3</mn>
+            </msup>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd columnalign="center">
+            <mrow>
+              <mo>-</mo>
+              <msup>
+                <mi>θ</mi>
+                <mn>3</mn>
+              </msup>
+            </mrow>
+          </mtd>
+          <mtd columnalign="center">
+            <mn>0</mn>
+          </mtd>
+        </mtr>
+      </mtable>
+      <mo>)</mo>
+    </mrow>
+  </mrow>
+</math>
+,
+</p>
+</li>
+<li>
+<p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="A^{4}=(A^{2})^{2}=\theta^{4}I" display="inline">
+  <mrow>
+    <msup>
+      <mi>A</mi>
+      <mn>4</mn>
+    </msup>
+    <mo>=</mo>
+    <msup>
+      <mrow>
+        <mo stretchy="false">(</mo>
+        <msup>
+          <mi>A</mi>
+          <mn>2</mn>
+        </msup>
+        <mo stretchy="false">)</mo>
+      </mrow>
+      <mn>2</mn>
+    </msup>
+    <mo>=</mo>
+    <mrow>
+      <msup>
+        <mi>θ</mi>
+        <mn>4</mn>
+      </msup>
+      <mo>⁢</mo>
+      <mi>I</mi>
+    </mrow>
+  </mrow>
+</math>
+.
+</p>
+</li>
+<li>
+<p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="A^{5}=\theta^{4}A" display="inline">
+  <mrow>
+    <msup>
+      <mi>A</mi>
+      <mn>5</mn>
+    </msup>
+    <mo>=</mo>
+    <mrow>
+      <msup>
+        <mi>θ</mi>
+        <mn>4</mn>
+      </msup>
+      <mo>⁢</mo>
+      <mi>A</mi>
+    </mrow>
+  </mrow>
+</math>
+, etc
+</p>
+</li>
+</ul>
+<p>
+  <time>8.40</time>so we end up with: <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{{{{\exp(A)=\left(}\begin{array}[cc]{}}\end{array}1-\frac{\theta^{2}}{2}+\frac{%&#10;\theta^{4}}{4!}-\cdots&amp;-\theta+\frac{1}{3!}\theta^{2}-\cdots\\&#10;\theta-\frac{1}{3!}\theta^{3}+\cdots&amp;1-\frac{1}{2}\theta^{2}+\frac{1}{4!}%&#10;\theta^{4}-\cdots\right)=\left(}\begin{array}[cc]{}}\end{array}\cos\theta&amp;-%&#10;\sin\theta\\&#10;\sin\theta&amp;\cos\theta\right)" display="block">
+  <mrow>
+    <mrow>
+      <mi>exp</mi>
+      <mo>⁡</mo>
+      <mrow>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo stretchy="false">)</mo>
+      </mrow>
+    </mrow>
+    <mo>=</mo>
+    <mrow>
+      <mo>(</mo>
+      <mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt">
+        <mtr>
+          <mtd columnalign="center">
+            <mrow>
+              <mrow>
+                <mrow>
+                  <mn>1</mn>
+                  <mo>-</mo>
+                  <mfrac>
+                    <msup>
+                      <mi>θ</mi>
+                      <mn>2</mn>
+                    </msup>
+                    <mn>2</mn>
+                  </mfrac>
+                </mrow>
+                <mo>+</mo>
+                <mfrac>
+                  <msup>
+                    <mi>θ</mi>
+                    <mn>4</mn>
+                  </msup>
+                  <mrow>
+                    <mn>4</mn>
+                    <mo lspace="0pt" rspace="3.5pt">!</mo>
+                  </mrow>
+                </mfrac>
+              </mrow>
+              <mo>-</mo>
+              <mi mathvariant="normal">⋯</mi>
+            </mrow>
+          </mtd>
+          <mtd columnalign="center">
+            <mrow>
+              <mrow>
+                <mrow>
+                  <mo>-</mo>
+                  <mi>θ</mi>
+                </mrow>
+                <mo>+</mo>
+                <mrow>
+                  <mfrac>
+                    <mn>1</mn>
+                    <mrow>
+                      <mn>3</mn>
+                      <mo lspace="0pt" rspace="3.5pt">!</mo>
+                    </mrow>
+                  </mfrac>
+                  <mo>⁢</mo>
+                  <msup>
+                    <mi>θ</mi>
+                    <mn>2</mn>
+                  </msup>
+                </mrow>
+              </mrow>
+              <mo>-</mo>
+              <mi mathvariant="normal">⋯</mi>
+            </mrow>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd columnalign="center">
+            <mrow>
+              <mrow>
+                <mi>θ</mi>
+                <mo>-</mo>
+                <mrow>
+                  <mfrac>
+                    <mn>1</mn>
+                    <mrow>
+                      <mn>3</mn>
+                      <mo lspace="0pt" rspace="3.5pt">!</mo>
+                    </mrow>
+                  </mfrac>
+                  <mo>⁢</mo>
+                  <msup>
+                    <mi>θ</mi>
+                    <mn>3</mn>
+                  </msup>
+                </mrow>
+              </mrow>
+              <mo>+</mo>
+              <mi mathvariant="normal">⋯</mi>
+            </mrow>
+          </mtd>
+          <mtd columnalign="center">
+            <mrow>
+              <mrow>
+                <mrow>
+                  <mn>1</mn>
+                  <mo>-</mo>
+                  <mrow>
+                    <mfrac>
+                      <mn>1</mn>
+                      <mn>2</mn>
+                    </mfrac>
+                    <mo>⁢</mo>
+                    <msup>
+                      <mi>θ</mi>
+                      <mn>2</mn>
+                    </msup>
+                  </mrow>
+                </mrow>
+                <mo>+</mo>
+                <mrow>
+                  <mfrac>
+                    <mn>1</mn>
+                    <mrow>
+                      <mn>4</mn>
+                      <mo lspace="0pt" rspace="3.5pt">!</mo>
+                    </mrow>
+                  </mfrac>
+                  <mo>⁢</mo>
+                  <msup>
+                    <mi>θ</mi>
+                    <mn>4</mn>
+                  </msup>
+                </mrow>
+              </mrow>
+              <mo>-</mo>
+              <mi mathvariant="normal">⋯</mi>
+            </mrow>
+          </mtd>
+        </mtr>
+      </mtable>
+      <mo>)</mo>
+    </mrow>
+    <mo>=</mo>
+    <mrow>
+      <mo>(</mo>
+      <mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt">
+        <mtr>
+          <mtd columnalign="center">
+            <mrow>
+              <mi>cos</mi>
+              <mo>⁡</mo>
+              <mi>θ</mi>
+            </mrow>
+          </mtd>
+          <mtd columnalign="center">
+            <mrow>
+              <mo>-</mo>
+              <mrow>
+                <mi>sin</mi>
+                <mo>⁡</mo>
+                <mi>θ</mi>
+              </mrow>
+            </mrow>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd columnalign="center">
+            <mrow>
+              <mi>sin</mi>
+              <mo>⁡</mo>
+              <mi>θ</mi>
+            </mrow>
+          </mtd>
+          <mtd columnalign="center">
+            <mrow>
+              <mi>cos</mi>
+              <mo>⁡</mo>
+              <mi>θ</mi>
+            </mrow>
+          </mtd>
+        </mtr>
+      </mtable>
+      <mo>)</mo>
+    </mrow>
+  </mrow>
+</math>
+ where we have just observed that the   power series in each entries are the Taylor series of cos and sin. 
+</p>
+<p>
+   <time>10.30</time> This is the 2-by-2 matrix that gives you a   rotation by an angle <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="\theta" display="inline">
+  <mi>θ</mi>
+</math>
+. 
+</p>
+</figure>
+<figure class="Remark">
+<figcaption id="rmk:exp_simple_complicated">
+Remark: 
+</figcaption>
+<p>
+  You should imagine that, as in this example, the exponential map   "eats" a very simple matrix (like an <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n" display="inline">
+  <mi>n</mi>
+</math>
+-by-<math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n" display="inline">
+  <mi>n</mi>
+</math>
+ antisymmetric   matrix) and outputs a much more complicated and useful matrix (like   an <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n" display="inline">
+  <mi>n</mi>
+</math>
+-by-<math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n" display="inline">
+  <mi>n</mi>
+</math>
+ rotation matrix). 
+</p>
+</figure>
+<figure class="Example">
+<figcaption id="exm:nilpotent">
+Example: 
+</figcaption>
+<p>
+  <time>11.30</time> Let's compute <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{{\exp\left(}\begin{array}[cc]{}}\end{array}0&amp;1\\&#10;0&amp;0\right)" display="inline">
+  <mrow>
+    <mi>exp</mi>
+    <mo>⁡</mo>
+    <mrow>
+      <mo>(</mo>
+      <mtable columnspacing="5pt" rowspacing="0pt">
+        <mtr>
+          <mtd columnalign="center">
+            <mn>0</mn>
+          </mtd>
+          <mtd columnalign="center">
+            <mn>1</mn>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd columnalign="center">
+            <mn>0</mn>
+          </mtd>
+          <mtd columnalign="center">
+            <mn>0</mn>
+          </mtd>
+        </mtr>
+      </mtable>
+      <mo>)</mo>
+    </mrow>
+  </mrow>
+</math>
+. From <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="I+A" display="inline">
+  <mrow>
+    <mi>I</mi>
+    <mo>+</mo>
+    <mi>A</mi>
+  </mrow>
+</math>
+   we get <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{{\left(}\begin{array}[cc]{}}\end{array}1&amp;1\\&#10;0&amp;1\right)" display="block">
+  <mrow>
+    <mo>(</mo>
+    <mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt">
+      <mtr>
+        <mtd columnalign="center">
+          <mn>1</mn>
+        </mtd>
+        <mtd columnalign="center">
+          <mn>1</mn>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd columnalign="center">
+          <mn>0</mn>
+        </mtd>
+        <mtd columnalign="center">
+          <mn>1</mn>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+   Since <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="A^{2}=0" display="inline">
+  <mrow>
+    <msup>
+      <mi>A</mi>
+      <mn>2</mn>
+    </msup>
+    <mo>=</mo>
+    <mn>0</mn>
+  </mrow>
+</math>
+, all the other terms vanish,   and this is the full answer. A matrix like this (where some power   vanishes) is called <def>nilpotent</def>, for example any strictly   upper triangular matrix is nilpotent, and the exponential of any   nilpotent matrix is a finite sum (infinitely many terms in the   infinite sum vanish).
+</p>
+</figure>
+</section>
+</main>
+<footer role="contentinfo">
+<hr/>
+CC-BY-SA 4.0, Jonny Evans 2020
+<hr/>
+</footer>
+</body>
+</html>

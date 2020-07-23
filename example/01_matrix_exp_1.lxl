@@ -1,0 +1,115 @@
+@ author Jonny Evans
+@ title The matrix exponential
+@ description Notes from an introductory lecture on Lie groups
+@ description in which we define the exponential of a matrix
+@ description and compute it in some simple examples.
+@ headcontent head
+@ footer footfile
+@ nav outline.yaml
+
+* An example: the group U(1)
+
+<time>0.00</time> Lie theory is based on the observation that we can
+define an exponential function for matrices in just the same way we
+can for numbers.
+
+# Example exm:unit_circle The group U(1)
+  <time>0.30</time> Let \(U(1)\) be the set of unit complex numbers,
+  i.e. the unit circle in \(\CC$the complex plane$\).
+
+  # tikzpicture unit_circle The unit circle in the complex plane
+    \draw (0,-2) -- (0,2);
+    \draw (-2,0) -- (2,0);
+    \node at (1:45) {\(\bullet\)};
+    \node at (0.5:22.5) {\(\theta\)};
+    \draw (0,0) circle [radius = 1];
+
+  <time>1.00</time> Any \(z\in U(1)$z in U(1)$\) can be written as
+  \(e^{i\theta}$e to the i theta$\) where \(\theta\) is the angle
+  \(z\) makes with the \(x\)-axis. Here are some comments:
+  - \(U(1)\) is a group under multiplication: \(z\in U(1)$z is in
+    U(1)$\) if and only if \(|z|^2=z\bar{z}=1$norm squared z (i.e. z
+    bar z) equals 1$\) so if \(z_1,z_2\in U(1)$z 1 and z 2 are both in
+    U(1)$\) then
+    \[|z_1z_2|^2=z_1z_2\bar{z}_1\bar{z}_2=z_1\bar{z}_1z_2\bar{z}_2=1$norm
+    squared z 1 z 2 equals z 1 z 2 z 1 bar z 2 bar equals z 1 z 1 bar
+    z 2 z 2 bar equals 1$\] so \(U(1)\) is closed under multiplication.
+  - <time>2.47</time> The identity element is the number \(1\).
+  - <time>3.15</time> Any \(z\in U(1)$z in U(1)$\) is the exponential
+    of a pure imaginary number (and conversely). The pure imaginary
+    axis is vertical, and therefore it's parallel to the tangent line
+    to the unit circle at the point \(1\) (i.e. the tangent line to
+    \(U(1)\) at the identity).
+    
+    # tikzpicture unit_circle_tangent The tangent line to U(1) at the identity
+      \draw (0,-2) -- (0,2);
+      \draw (-2,0) -- (2,0);
+      \node[red] at (1,0) {\(\bullet\)};
+      \draw (1,-2) -- (1,2);
+      \draw (0,0) circle [radius = 1];
+
+<time>4.50</time> These three facts will generalise: given a group
+\(G\) of matrices, take the tangent space to \(G\) at the identity
+matrix (and translate it to pass through the zero matrix); the
+exponentials of these matrices are going to give us elements of \(G\).
+
+* The matrix exponential function
+
+# Definition def:exp The matrix exponential 
+  <time>5.15</time> If \(A\) is a square matrix then the
+  <def>exponential of \(A\)</def> is defined to be
+  \[\exp(A)=I+A+\frac{1}{2}A^2+\frac{1}{3!}A^3+\cdots=
+  \sum_{n=0}^\infty\frac{1}{n!}A^n.$exp of A equals the identity, plus
+  A, plus a half A squared, plus one over 3 factorial A cubed plus dot
+  dot dot, i.e. the sum from n equals 0 to infinity of one over n
+  factorial A to the n.$\] Here \(A^0=I$A to the zero means the
+  identity$\).
+
+# Example exm:exp_rotation
+  <time>6.50</time> Let \(A=\begin{pmatrix} 0 & -\theta \\ \theta &
+  0\end{pmatrix}$A be the 2-by-2 matrix 0, minus theta, theta,
+  0$\). We'll compute \(\exp(A)\). First let's compute the powers of
+  \(A\):
+  - \(A^2=\begin{pmatrix}-\theta^2 & 0 \\ 0 &
+    -\theta^2\end{pmatrix}=-\theta^2 I$A squared equals minus theta
+    squared, 0, 0 minus theta squared, which is just minus theta
+    squared times the identity matrix$\),
+  - \(A^3=\begin{pmatrix}0&\theta^3 \\ -\theta^3 &0\end{pmatrix}$A
+    cubed equals 0, theta cubed, minus theta cubed, 0$\),
+  - \(A^4=(A^2)^2=\theta^4 I$A to the 4 equals (A squared) squared,
+    which is theta to the 4 times the identity$\).
+  - \(A^5=\theta^4A$A to the 5 equals theta to the 4 times A$\), etc
+  <time>8.40</time>so we end up with: \[\exp(A)=\begin{pmatrix}
+  1-\frac{\theta^2}{2}+\frac{\theta^4}{4!}-\cdots &
+  -\theta+\frac{1}{3!}\theta^2-\cdots
+  \\ \theta-\frac{1}{3!}\theta^3+\cdots &
+  1-\frac{1}{2}\theta^2+\frac{1}{4!}\theta^4-\cdots\end{pmatrix}=\begin{pmatrix}\cos\theta
+  & -\sin\theta \\ \sin\theta & \cos\theta\end{pmatrix}$exp A equals
+  the 2-by-2 matrix whose entries are: 1 minus a half theta squared
+  plus one over 4 factorial theta to the 4 dot dot dot, minus theta
+  plus one over three factorial theta cubed minus dot dot dot, theta
+  minus one over three factorial theta cubed plus dot dot dot, 1 minus
+  a half theta squared plus one over 4 factorial theta to the four dot
+  dot dot, which is just the 2-by-2 matrix cos theta, minus sine
+  theta, sine theta, cos theta$\] where we have just observed that the
+  power series in each entries are the Taylor series of cos and sin.
+
+  <time>10.30</time> This is the 2-by-2 matrix that gives you a
+  rotation by an angle \(\theta\).
+
+# Remark rmk:exp_simple_complicated
+  You should imagine that, as in this example, the exponential map
+  "eats" a very simple matrix (like an \(n\)-by-\(n\) antisymmetric
+  matrix) and outputs a much more complicated and useful matrix (like
+  an \(n\)-by-\(n\) rotation matrix).
+
+# Example exm:nilpotent
+  <time>11.30</time> Let's compute \(\exp\begin{pmatrix} 0 & 1 \\ 0 &
+  0 \end{pmatrix}$exp of the 2-by-2 matrix 0, 1, 0, 0$\). From \(I+A\)
+  we get \[\begin{pmatrix} 1 & 1 \\ 0 & 1\end{pmatrix}$1, 1, 0, 1$\]
+  Since \(A^2=0$A squared equals zero$\), all the other terms vanish,
+  and this is the full answer. A matrix like this (where some power
+  vanishes) is called <def>nilpotent</def>, for example any strictly
+  upper triangular matrix is nilpotent, and the exponential of any
+  nilpotent matrix is a finite sum (infinitely many terms in the
+  infinite sum vanish).

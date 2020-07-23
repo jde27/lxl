@@ -1,0 +1,23 @@
+.Lemma, .Theorem, .Example, .Remark, .Corollary, .Proposition, .Definition {
+    margin: 0 0 1em 0;
+}
+figcaption {
+    display: inline;
+    font-weight: bold;
+}
+
+.Lemma p, .Theorem p, .Example p, .Remark p, .Corollary p, .Proposition p, .Definition p {
+    display: inline;
+}
+
+time{
+    font-style: italic;
+}
+
+time::before {
+    content: '(';
+}
+
+time::after {
+    content: ') ';
+}
